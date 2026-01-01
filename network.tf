@@ -36,7 +36,7 @@ resource "azurerm_subnet" "app_snet" {
 }
 
 resource "azurerm_subnet" "data_snet" {
-  name                 = "data-snet" # for SQL
+  name                 = "data-snet" 
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.0.5.0/24"]

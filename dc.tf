@@ -8,7 +8,6 @@ resource "azurerm_network_interface" "dc_nic" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.dc_snet.id
     private_ip_address_allocation = "Dynamic"
-    # No Public IP here!
   }
 }
 

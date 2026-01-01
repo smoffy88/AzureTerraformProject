@@ -14,7 +14,7 @@ resource "azurerm_windows_virtual_machine" "db" {
   name                = "db1"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
-  size                = "Standard_B2ms" # Slightly larger for SQL
+  size                = "Standard_D8_v4" 
   admin_username      = var.admin_username
   admin_password      = var.admin_password
   network_interface_ids = [
@@ -26,11 +26,11 @@ resource "azurerm_windows_virtual_machine" "db" {
     storage_account_type = "Standard_LRS"
   }
 
-  # Using a SQL image specifically (optional, can just be Windows)
+  # Using a SQL image specifically
   source_image_reference {
     publisher = "MicrosoftSQLServer"
     offer     = "sql2019-ws2019"
-    sku       = "sqldev" # Developer edition is free for dev/test
+    sku       = "sqldev" 
     version   = "latest"
   }
 }

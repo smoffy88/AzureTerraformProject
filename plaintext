@@ -1,7 +1,7 @@
 .
 ├── .github/
 │   └── workflows/
-│       └── terraform.yml  # Your GitHub Actions Pipeline
+│       └── terraform.yml  # GitHub Actions Pipeline
 ├── .tflint.hcl            # Configuration for the Linter
 ├── main.tf                # Provider config & Resource Group
 ├── network.tf             # VNet, Subnets, and Network Security Groups
@@ -11,4 +11,4 @@
 ├── app.tf                 # App Servers (2 VMs)
 ├── data.tf                # SQL Server (1 VM)
 ├── variables.tf           # Definitions of variables
-└── terraform.tfvars       # The actual values for your environment
+└── terraform.tfvars       # Values for your environment

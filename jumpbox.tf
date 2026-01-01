@@ -25,7 +25,7 @@ resource "azurerm_windows_virtual_machine" "jmp" {
   name                = "jmp1"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
-  size                = "Standard_B2s" # Cost-effective size
+  size                = "Standard_B2s" 
   admin_username      = var.admin_username
   admin_password      = var.admin_password
   network_interface_ids = [
