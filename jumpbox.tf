@@ -4,6 +4,7 @@ resource "azurerm_public_ip" "jmp_pip" {
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
   allocation_method   = "Static"
+  tags                = var.tags
 }
 
 # Network Interface for Jumpbox
@@ -11,6 +12,7 @@ resource "azurerm_network_interface" "jmp_nic" {
   name                = "jmp1-nic"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
+  tags                = var.tags
 
   ip_configuration {
     name                          = "internal"
@@ -25,9 +27,10 @@ resource "azurerm_windows_virtual_machine" "jmp" {
   name                = "jmp1"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
-  size                = "Standard_B2s" 
+  size                = var.vm_sizes["jumpbox"]
   admin_username      = var.admin_username
   admin_password      = var.admin_password
+  tags                = var.tags
   network_interface_ids = [
     azurerm_network_interface.jmp_nic.id,
   ]

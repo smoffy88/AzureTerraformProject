@@ -3,6 +3,7 @@ resource "azurerm_network_interface" "web_nic" {
   name                = "web${count.index + 1}-nic"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
+  tags                = var.tags
 
   ip_configuration {
     name                          = "internal"
@@ -16,9 +17,10 @@ resource "azurerm_windows_virtual_machine" "web" {
   name                = "web${count.index + 1}"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
-  size                = "Standard_B2s"
+  size                = var.vm_sizes["web"]
   admin_username      = var.admin_username
   admin_password      = var.admin_password
+  tags                = var.tags
   network_interface_ids = [
     azurerm_network_interface.web_nic[count.index].id,
   ]
